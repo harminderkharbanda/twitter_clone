@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:twitter_clone/signup.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,56 +11,101 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Twitter',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
+  const MyHomePage({super.key});
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final GlobalKey<FormState> _signinKey = GlobalKey();
+  final RegExp _emailRegex = RegExp(
+    r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
+  );
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
-      body: Center(
+      body: Form(
+        key: _signinKey,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text('You have pushed the button this many times:'),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+            Text("Log in to Twitter", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+            Container(
+              margin: const EdgeInsets.fromLTRB(15, 30, 15, 0),
+              decoration: BoxDecoration(
+                color: Colors.grey.shade200,
+                borderRadius: BorderRadius.circular(30)
+              ),
+              child: TextFormField(
+                keyboardType: TextInputType.emailAddress,
+                controller: _emailController,
+                decoration: const InputDecoration(
+                  border: InputBorder.none,
+                  contentPadding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+                  hintText: 'Enter your email',
+                ),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return "Enter email";
+                  } else if (!_emailRegex.hasMatch(value)) {
+                    return "Enter valid email";
+                  }
+                  return null;
+                },
+              )
             ),
+            Container(
+              margin: const EdgeInsets.all(15),
+              decoration: BoxDecoration(
+                  color: Colors.grey.shade200,
+                  borderRadius: BorderRadius.circular(30)
+              ),
+              child: TextFormField(
+                obscureText: true,
+                controller: _passwordController,
+                decoration: const InputDecoration(
+                  border: InputBorder.none,
+                  contentPadding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+                  hintText: 'Enter your password',
+                ),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return "Enter password";
+                  } else if (value.length < 6) {
+                    return "Enter more than 6 digits";
+                  }
+                  return null;
+                }
+              ),
+            ),
+            Container(
+              width: 200,
+              decoration: BoxDecoration(color: Colors.blue, borderRadius: BorderRadius.circular(30)),
+              child: TextButton(onPressed: () {
+                if (_signinKey.currentState!.validate()) {
+                  debugPrint("Email: ${_emailController.text}");
+                  debugPrint("Password: ${_passwordController.text}");
+                }
+              }, child: const Text("Log In", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18))),
+            ),
+            TextButton(onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => SignupPage()));
+            }, child: Text("Don't have an account? Sign up here"))
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
       ),
     );
   }
