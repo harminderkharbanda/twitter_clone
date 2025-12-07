@@ -37,6 +37,7 @@ dependencies:
   font_awesome_flutter: ^10.9.1
   flutter_riverpod: ^3.0.3
   firebase_core: ^4.2.1
+  firebase_auth: ^6.1.2
 
 
 dev_dependencies:

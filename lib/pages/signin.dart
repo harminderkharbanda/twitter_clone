@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:twitter_clone/provider.dart';
@@ -12,6 +13,7 @@ class SignIn extends ConsumerWidget {
   final RegExp _emailRegex = RegExp(
     r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
   );
+  final FirebaseAuth _auth = FirebaseAuth.instance;
 
 
   @override
@@ -79,10 +81,14 @@ class SignIn extends ConsumerWidget {
             Container(
               width: 200,
               decoration: BoxDecoration(color: Colors.blue, borderRadius: BorderRadius.circular(30)),
-              child: TextButton(onPressed: () {
+              child: TextButton(onPressed: () async {
+                final messenger = ScaffoldMessenger.of(context);
                 if (_signinKey.currentState!.validate()) {
-                  debugPrint("Email: ${_emailController.text}");
-                  debugPrint("Password: ${_passwordController.text}");
+                  try {
+                    await _auth.signInWithEmailAndPassword(email: _emailController.text, password: _passwordController.text);
+                  } catch(e) {
+                    messenger.showSnackBar(SnackBar(content: Text(e.toString())));
+                  }
                 }
               }, child: const Text("Log In", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18))),
             ),

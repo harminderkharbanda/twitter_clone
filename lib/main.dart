@@ -1,6 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:twitter_clone/pages/Home.dart';
 import 'package:twitter_clone/pages/signin.dart';
 
 import 'firebase_options.dart';
@@ -23,7 +25,16 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: SignIn(),
+      home: StreamBuilder<User?>(
+        stream: FirebaseAuth.instance.authStateChanges(),
+        builder: (context, asyncSnapshot) {
+          if (asyncSnapshot.hasData) {
+            return Home();
+          }
+          return SignIn();
+        }
+      ),
+      debugShowCheckedModeBanner: false,
     );
   }
 }

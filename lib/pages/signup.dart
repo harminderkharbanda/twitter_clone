@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -15,6 +16,8 @@ class _SignupPageState extends State<SignupPage> {
   final RegExp _emailRegex = RegExp(
     r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
   );
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -77,10 +80,16 @@ class _SignupPageState extends State<SignupPage> {
             Container(
               width: 200,
               decoration: BoxDecoration(color: Colors.blue, borderRadius: BorderRadius.circular(30)),
-              child: TextButton(onPressed: () {
+              child: TextButton(onPressed: () async {
+                final messenger = ScaffoldMessenger.of(context);
+                final navigator = Navigator.of(context);
                 if (_signinKey.currentState!.validate()) {
-                  debugPrint("Email: ${_emailController.text}");
-                  debugPrint("Password: ${_passwordController.text}");
+                  try {
+                    await _auth.createUserWithEmailAndPassword(email: _emailController.text, password: _passwordController.text);
+                    navigator.pop();
+                  } catch(e) {
+                    messenger.showSnackBar(SnackBar(content: Text(e.toString())));
+                  }
                 }
               }, child: const Text("Sign Up", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18))),
             ),
