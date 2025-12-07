@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "605950038024",
+    "project_id": "twitter-clone-harry",
+    "storage_bucket": "twitter-clone-harry.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:605950038024:android:f850e25e427c0d890381bd",
+        "android_client_info": {
+          "package_name": "com.harryapps.todo_app_flutter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBiNpNQ1Anq9Eg53nzyBa3bXpf5zNfnZys"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:605950038024:android:609ec23cbbd6239b0381bd",
+        "android_client_info": {
+          "package_name": "com.harryapps.twitter_clone"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBiNpNQ1Anq9Eg53nzyBa3bXpf5zNfnZys"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
