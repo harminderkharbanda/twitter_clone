@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:twitter_clone/provider.dart';
 import 'package:twitter_clone/pages/signup.dart';
+import 'package:twitter_clone/providers/user_provider.dart';
 
 class SignIn extends ConsumerWidget {
   SignIn({super.key});
@@ -18,8 +19,6 @@ class SignIn extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    int counter = ref.watch(counterProvider);
-    CounterNotifier counterNotifier = ref.watch(counterProvider.notifier);
 
     return Scaffold(
       body: Form(
@@ -86,6 +85,7 @@ class SignIn extends ConsumerWidget {
                 if (_signinKey.currentState!.validate()) {
                   try {
                     await _auth.signInWithEmailAndPassword(email: _emailController.text, password: _passwordController.text);
+                    await ref.read(userProvider.notifier).signIn(_emailController.text);
                   } catch(e) {
                     messenger.showSnackBar(SnackBar(content: Text(e.toString())));
                   }
@@ -95,18 +95,6 @@ class SignIn extends ConsumerWidget {
             TextButton(onPressed: () {
               Navigator.of(context).push(MaterialPageRoute(builder: (context) => SignupPage()));
             }, child: Text("Don't have an account? Sign up here", style: TextStyle(color: Colors.blue)),),
-            Text(ref.read(normalProvider)),
-            ref.watch(messageProvider).when(data: (message) {
-              return Text(message);
-            }, error: (error, stack) {
-              return Text("error");
-            }, loading: () {
-              return CircularProgressIndicator();
-            }),
-            Text("Counter is $counter"),
-            TextButton(onPressed: () {
-              counterNotifier.add();
-            }, child: Text("ADD"))
           ],
         ),
       ),

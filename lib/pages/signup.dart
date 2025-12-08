@@ -1,15 +1,19 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:twitter_clone/models/user.dart';
+import 'package:twitter_clone/providers/user_provider.dart';
 
-class SignupPage extends StatefulWidget {
+class SignupPage extends ConsumerStatefulWidget {
   const SignupPage({super.key});
 
   @override
-  State<SignupPage> createState() => _SignupPageState();
+  ConsumerState<SignupPage> createState() => _SignupPageState();
 }
 
-class _SignupPageState extends State<SignupPage> {
+class _SignupPageState extends ConsumerState<SignupPage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final GlobalKey<FormState> _signinKey = GlobalKey();
@@ -86,6 +90,7 @@ class _SignupPageState extends State<SignupPage> {
                 if (_signinKey.currentState!.validate()) {
                   try {
                     await _auth.createUserWithEmailAndPassword(email: _emailController.text, password: _passwordController.text);
+                    await ref.read(userProvider.notifier).signUp(_emailController.text);
                     navigator.pop();
                   } catch(e) {
                     messenger.showSnackBar(SnackBar(content: Text(e.toString())));

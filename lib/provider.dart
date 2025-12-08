@@ -23,3 +23,12 @@ class CounterNotifier extends StateNotifier<int> {
   }
 
 }
+
+// Text(ref.read(normalProvider)),
+// ref.watch(messageProvider).when(data: (message) {
+//   return Text(message);
+// }, error: (error, stack) {
+//   return Text("error");
+// }, loading: () {
+//   return CircularProgressIndicator();
+// }),
