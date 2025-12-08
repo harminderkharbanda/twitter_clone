@@ -41,46 +41,47 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyA6X3Q13egKV_NKr95t7yLNOVJ5z5xgveE',
-    appId: '1:605950038024:web:5ba6e4420df2bd080381bd',
-    messagingSenderId: '605950038024',
-    projectId: 'twitter-clone-harry',
-    authDomain: 'twitter-clone-harry.firebaseapp.com',
-    storageBucket: 'twitter-clone-harry.firebasestorage.app',
+    apiKey: 'AIzaSyDxNrSuU0pczgWQneQGZstKb_ZDfXSm4gw',
+    appId: '1:706563876040:web:bcc585c5ea65c12db4b1fd',
+    messagingSenderId: '706563876040',
+    projectId: 'twitter-us-4',
+    authDomain: 'twitter-us-4.firebaseapp.com',
+    storageBucket: 'twitter-us-4.firebasestorage.app',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyBiNpNQ1Anq9Eg53nzyBa3bXpf5zNfnZys',
-    appId: '1:605950038024:android:609ec23cbbd6239b0381bd',
-    messagingSenderId: '605950038024',
-    projectId: 'twitter-clone-harry',
-    storageBucket: 'twitter-clone-harry.firebasestorage.app',
+    apiKey: 'AIzaSyBdNZvO15zNXj53dr09ZyWiI2kJN-pWhw4',
+    appId: '1:706563876040:android:4556b69b10fca5cfb4b1fd',
+    messagingSenderId: '706563876040',
+    projectId: 'twitter-us-4',
+    storageBucket: 'twitter-us-4.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyC0t05i8bttCrYHVZZic7VSwZvGlJ8gO_8',
-    appId: '1:605950038024:ios:e17a176fb7716a8c0381bd',
-    messagingSenderId: '605950038024',
-    projectId: 'twitter-clone-harry',
-    storageBucket: 'twitter-clone-harry.firebasestorage.app',
+    apiKey: 'AIzaSyAbPCn9jZdRJZzHid5wGb8_jYjwVTh2lZI',
+    appId: '1:706563876040:ios:6d08fcbfc2123b1fb4b1fd',
+    messagingSenderId: '706563876040',
+    projectId: 'twitter-us-4',
+    storageBucket: 'twitter-us-4.firebasestorage.app',
     iosBundleId: 'com.harryapps.twitterClone',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyC0t05i8bttCrYHVZZic7VSwZvGlJ8gO_8',
-    appId: '1:605950038024:ios:e17a176fb7716a8c0381bd',
-    messagingSenderId: '605950038024',
-    projectId: 'twitter-clone-harry',
-    storageBucket: 'twitter-clone-harry.firebasestorage.app',
+    apiKey: 'AIzaSyAbPCn9jZdRJZzHid5wGb8_jYjwVTh2lZI',
+    appId: '1:706563876040:ios:6d08fcbfc2123b1fb4b1fd',
+    messagingSenderId: '706563876040',
+    projectId: 'twitter-us-4',
+    storageBucket: 'twitter-us-4.firebasestorage.app',
     iosBundleId: 'com.harryapps.twitterClone',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyA6X3Q13egKV_NKr95t7yLNOVJ5z5xgveE',
-    appId: '1:605950038024:web:f27c9f5d4c7d6a3b0381bd',
-    messagingSenderId: '605950038024',
-    projectId: 'twitter-clone-harry',
-    authDomain: 'twitter-clone-harry.firebaseapp.com',
-    storageBucket: 'twitter-clone-harry.firebasestorage.app',
+    apiKey: 'AIzaSyDxNrSuU0pczgWQneQGZstKb_ZDfXSm4gw',
+    appId: '1:706563876040:web:97d18596cefac095b4b1fd',
+    messagingSenderId: '706563876040',
+    projectId: 'twitter-us-4',
+    authDomain: 'twitter-us-4.firebaseapp.com',
+    storageBucket: 'twitter-us-4.firebasestorage.app',
   );
+
 }

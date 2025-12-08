@@ -1,9 +1,7 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:twitter_clone/models/user.dart';
 import 'package:twitter_clone/providers/user_provider.dart';
 
 class SignupPage extends ConsumerStatefulWidget {

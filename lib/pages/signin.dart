@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:twitter_clone/provider.dart';
 import 'package:twitter_clone/pages/signup.dart';
 import 'package:twitter_clone/providers/user_provider.dart';
 
