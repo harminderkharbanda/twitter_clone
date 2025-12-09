@@ -35,6 +35,7 @@ class SignIn extends ConsumerWidget {
                     borderRadius: BorderRadius.circular(30)
                 ),
                 child: TextFormField(
+                  key: ValueKey("userEmail"),
                   keyboardType: TextInputType.emailAddress,
                   controller: _emailController,
                   decoration: const InputDecoration(
@@ -59,6 +60,7 @@ class SignIn extends ConsumerWidget {
                   borderRadius: BorderRadius.circular(30)
               ),
               child: TextFormField(
+                  key: ValueKey("userPassword"),
                   obscureText: true,
                   controller: _passwordController,
                   decoration: const InputDecoration(
@@ -79,7 +81,9 @@ class SignIn extends ConsumerWidget {
             Container(
               width: 200,
               decoration: BoxDecoration(color: Colors.blue, borderRadius: BorderRadius.circular(30)),
-              child: TextButton(onPressed: () async {
+              child: TextButton(
+                  key: ValueKey("signin"),
+                  onPressed: () async {
                 final messenger = ScaffoldMessenger.of(context);
                 if (_signinKey.currentState!.validate()) {
                   try {

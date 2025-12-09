@@ -18,6 +18,7 @@ class Home extends ConsumerWidget {
       appBar: AppBar(
         title: const Image(image: AssetImage('assets/images/twitter_logo.png'), width: 50,),
         leading: Builder(
+          key: ValueKey("profilePic"),
           builder: (context) {
             return GestureDetector(
               onTap: () => {
@@ -69,6 +70,7 @@ class Home extends ConsumerWidget {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => Settings()));
               },),
             ListTile(
+              key: ValueKey("signout"),
               title: Text("Sign out"),
               onTap: () {
                 FirebaseAuth.instance.signOut();
