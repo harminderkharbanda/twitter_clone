@@ -24,16 +24,17 @@ class MyApp extends ConsumerWidget {
     return MaterialApp(
       title: 'Twitter',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         appBarTheme: AppBarTheme(
             centerTitle: true,
-            backgroundColor: Colors.blue,
+            backgroundColor: Colors.transparent,
+            shadowColor: Colors.transparent,
             titleTextStyle: TextStyle(
                 fontSize: 20,
+                color: Colors.black,
                 fontWeight: FontWeight.bold
             ),
           iconTheme: IconThemeData(
-              color: Colors.white
+              color: Colors.black
           ),
         ),
       ),
